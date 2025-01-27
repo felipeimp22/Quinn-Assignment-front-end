@@ -1,38 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🎧 Audiobook Platform
 
-First, run the development server:
+Welcome to the **Audiobook Platform**, a cutting-edge web application designed to deliver seamless audiobook management, chapter creation, and user engagement through modern technologies and clean code principles.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
 
-ssh -R 80:localhost:3000 nokey@localhost.run
+## 🚀 Features
+
+### 📚 Audiobook Management
+- **Create Audiobooks**: Add new audiobooks with metadata such as title, author, duration, and plan (free or premium).
+- **Filter Audiobooks**: Filter audiobooks by title, genres, and categories with real-time updates.
+- **Chapter Management**: Create chapters for specific audiobooks, upload audio files, and manage them effectively.
+- **Genre and Category Association**: Link genres and categories to audiobooks dynamically.
+
+### 💬 User Interaction
+- **Comments**: Users can leave comments on audiobooks.
+- **Authenticated Access**: Private routes and actions are protected using guards, ensuring only authenticated users can perform specific actions.
+
+### 🛠️ Modern Development Practices
+- **Componentized Architecture**: Every UI element is highly reusable and modular, improving scalability and maintainability.
+- **Context and Local Storage**: User state and data are efficiently managed using React Context and Local Storage.
+- **Private/Public Route Guards**: A guard mechanism is in place to differentiate between private and public routes, enhancing application security.
+
+### 🔒 Secure and Error-Free
+- **Zero Vulnerabilities**: `npm audit` reports zero vulnerabilities in the project dependencies.
+- **Linting Perfection**: The project passes `eslint` checks with no errors, ensuring clean, readable, and maintainable code.
+
+---
+
+## 🛠️ Tech Stack
+
+- **React**: For building dynamic user interfaces.
+- **TypeScript**: Ensures type safety across the entire codebase.
+- **Styled-Components**: For modular and scalable styling.
+- **React Router**: For seamless navigation and route handling.
+- **React-Toastify**: Provides user-friendly notifications and alerts.
+
+
+---
+
+## 📂 Project Structure
+
+```
+src              # source folder
+components       # Reusable UI components (e.g., forms, buttons, lists)
+pages            # Application pages (e.g., CreateAudioBook, Chapters, Comments)
+services         # API service functions (e.g., createAudioBook, fetchChapters)
+contexts         # React Context files for state management
+routes           # Guards and route definitions (private and public)
+styles           # Global and theme-based styles
+
+README.md            # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧰 Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js (>= 14.x)
+- npm (>= 6.x)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Getting Started
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/your-repo/audiobook-platform.git
+cd audiobook-platform
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 2️⃣ Install Dependencies
+```bash
+npm install
+```
 
-## Deploy on Vercel
+### 3️⃣ Run the Application
+#### Development Mode
+```bash
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Production Build
+```bash
+npm run build
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4️⃣ Run Linter and Audit
+- **Linting**: Ensure no code issues:
+  ```bash
+  npm run lint
+  ```
+- **Audit Dependencies**: Verify no vulnerabilities:
+  ```bash
+  npm audit
+  ```
+---
+
+## 💻 Contributing
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-name`.
+3. Make your changes and commit them: `git commit -m "Added feature"`.
+4. Push the changes: `git push origin feature-name`.
+5. Open a pull request.
+
+---
+
+## 🤝 Acknowledgments
+
+Special thanks to the development community for providing tools, libraries, and support that make projects like this possible.
+
+---
+
+## 🛡️ License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+---
+
+### Made with ❤️ by felipeimp
