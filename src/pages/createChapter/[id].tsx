@@ -14,7 +14,7 @@ import { createChapter } from "@/services/createChapter";
 
 const InsertChapterPage: React.FC = () => {
   const router = useRouter();
-  const { id } = router.query; // Get audiobook ID from query params
+  const { id } = router.query;
   const [title, setTitle] = useState("");
   const [duration, setDuration] = useState("");
   const [audioFile, setAudioFile] = useState<File | null>(null);

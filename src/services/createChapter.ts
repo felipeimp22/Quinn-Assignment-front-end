@@ -4,7 +4,7 @@ export const createChapter = async (audioBookFk: string, title: string, duration
   const token = localStorage.getItem("token");
 
   const formData = new FormData();
-  formData.append("audio_file", audioFile); // Only the audio file is in the body
+  formData.append("audio_file", audioFile); 
 
   const url = `/audiobooks/chapters?audio_book_fk=${encodeURIComponent(audioBookFk)}&title=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration)}`;
 

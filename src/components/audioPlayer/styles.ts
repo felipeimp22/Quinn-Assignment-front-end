@@ -9,16 +9,6 @@ export const AudioPlayerContainer = styled.div`
   background-color: #1a0a12;
 `;
 
-export const BlackSection = styled.div`
-  background: #000;
-  width: 60%;
-  height: 50%;
-  border-bottom-left-radius: 50%;
-  border-bottom-right-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 export const ProgressBarContainer = styled.div`
   position: relative;
@@ -33,8 +23,6 @@ export const ProgressBarBackground = styled.div`
   width: 100%;
   height: 100%;
   border-bottom: 12px solid #333;
-  /* border-bottom-left-radius: 150px;
-  border-bottom-right-radius: 150px; */
 `;
 
 export const ProgressBarForeground = styled.div<{ progress: number }>`
@@ -42,8 +30,6 @@ export const ProgressBarForeground = styled.div<{ progress: number }>`
   width: 100%;
   height: 100%;
   border-bottom: 12px solid #ff007f;
-  /* border-bottom-left-radius: 150px;
-  border-bottom-right-radius: 150px; */
   clip-path: inset(0 ${(props) => 100 - props.progress}% 0 0);
 `;
 

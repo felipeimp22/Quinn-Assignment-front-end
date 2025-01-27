@@ -1,4 +1,3 @@
-// pages/_app.tsx
 import { AuthProvider } from '../context/AuthContext';
 import type { AppProps } from 'next/app';
 import { AuthGuard } from '@/common/guards/AuthGuard';

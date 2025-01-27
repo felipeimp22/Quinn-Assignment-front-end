@@ -1,6 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-// to optimize use @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-// the way below is using all mont serrat font family
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 *{

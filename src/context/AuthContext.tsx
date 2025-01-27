@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   if (isAuthenticated === null) {
-    return <div>Loading...</div>; // Show a loading state while checking auth status
+    return <div>Loading...</div>;
   }
 
   return (
