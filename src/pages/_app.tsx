@@ -9,7 +9,7 @@ import Header from '@/components/header/header';
 import GlobalStyle from '@/styles/global'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>({ key: 'theme', initialState: defaultTheme })
+  const [theme,] = usePersistedState<DefaultTheme>({ key: 'theme', initialState: defaultTheme })
   return (
     <AuthProvider>
       <AuthGuard>

@@ -10,7 +10,7 @@ import {ContentContainer, IntroSection, HeroText, TrendingSection} from './style
 
 
 const IntroContent = () => {
-  const [trendings, setTrendings] = useState<any[]>([]);
+  const [trendings, setTrendings] = useState([]);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
@@ -19,7 +19,7 @@ const IntroContent = () => {
     try {
       const data = await fetchFilteredAudiobooks("", [], []);
       setTrendings(data.data);
-    } catch (err) {
+    } catch {
       setError("Failed to fetch audiobooks.");
     }
   };
@@ -66,7 +66,7 @@ const IntroContent = () => {
               title="Trending Now 🔥"
               items={trendings}
               onItemClick={(el) => handlePlay(el.id)}
-              whiteText={true}
+              blackText={false}
             />
           ) : null}
         </TrendingSection>

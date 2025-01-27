@@ -22,7 +22,7 @@ interface ListProps {
   loadMoreItems?: () => void;
   backgroundTransparent?: boolean;
   disablePlay?: boolean;
-  whiteText?:boolean;
+  blackText?: boolean;
 }
 
 const ListItems: React.FC<ListProps> = ({
@@ -32,7 +32,7 @@ const ListItems: React.FC<ListProps> = ({
   loadMoreItems,
   backgroundTransparent = false,
   disablePlay = false,
-  whiteText = false
+  blackText = false,
 }) => {
   const listEndRef = useRef<HTMLDivElement | null>(null);
 
@@ -66,26 +66,42 @@ const ListItems: React.FC<ListProps> = ({
   return (
     <ListContainer>
       <ListTitle>{title}</ListTitle>
-      {items.map((item) => (
-        <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
-        <ListItemContainer
-          style={
-            backgroundTransparent ? { backgroundColor: "transparent" } : {}
-          }
-          key={item.id}
+      {items.map((item, index) => (
+        <div
+          key={index}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
         >
-          <ItemDetails>
-            <span style={whiteText ? {color:"white"}:{}}>{item.title}</span>
-            {item.subTitle && <span style={{color:"#FF275B"}}>{item.subTitle}</span>}
-            
-            {item.author && <span style={whiteText ? {color:"white"}:{}}>by {item.author}</span>}
-          </ItemDetails>
-          {!disablePlay && onItemClick ? (
-            <PlayButton onClick={() => onItemClick(item)}>Play</PlayButton>
-          ) : null}
-        </ListItemContainer>
+          <ListItemContainer
+            style={
+              backgroundTransparent ? { backgroundColor: "transparent" } : {}
+            }
+            key={item.id}
+          >
+            <ItemDetails>
+              <span style={!blackText ? { color: "white" } : {}}>
+                {item.title}
+              </span>
+              {item.subTitle && (
+                <span style={{ color: "#FF275B" }}>{item.subTitle}</span>
+              )}
+
+              {item.author && (
+                <span style={!blackText ? { color: "white" } : {}}>
+                  by {item.author}
+                </span>
+              )}
+            </ItemDetails>
+            {!disablePlay && onItemClick ? (
+              <PlayButton onClick={() => onItemClick(item)}>Play</PlayButton>
+            ) : null}
+          </ListItemContainer>
           <BorderStyled />
-          </ div>
+        </div>
       ))}
 
       <div ref={listEndRef} style={{ height: "1px" }} />

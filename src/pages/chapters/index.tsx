@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { fetchChapters } from "@/services/fetchChapters";
 import ListItems from "@/components/listItems/listItems";
-import { SubmitButton, Title } from "@/components/forms/forms";
+import { SubmitButton } from "@/components/forms/forms";
 
 interface Chapter {
   id: string;
@@ -92,7 +92,7 @@ const ChaptersPage = () => {
         <ListItems
           title="Chapters"
           items={chapters}
-          onItemClick={(el: any) => handlePlay(el)}
+          onItemClick={(el) => handlePlay(el as Chapter)}
           loadMoreItems={loadMoreItems}
         />
       ) : (

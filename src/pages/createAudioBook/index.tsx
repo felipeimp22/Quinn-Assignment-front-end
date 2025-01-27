@@ -19,10 +19,10 @@ const CreateAudioBookPage: React.FC = () => {
   const [duration, setDuration] = useState("");
   const [plan, setPlan] = useState("free");
 
-  const [categories, setCategories] = useState<any[]>([]);
-  const [genres, setGenres] = useState<any[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
-  const [selectedGenres, setSelectedGenres] = useState<any[]>([]);
+  const [categories, setCategories] = useState<{id:string, category_name:string}[]>([]);
+  const [genres, setGenres] = useState<{id:string, genre_name: string}[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<{id:string, category_name:string}[]>([]);
+  const [selectedGenres, setSelectedGenres] = useState<{id:string, genre_name: string}[]>([]);
 
   const token = localStorage.getItem("token");
 
@@ -38,7 +38,7 @@ const CreateAudioBookPage: React.FC = () => {
         const fetchedCategories = await getCategories(token);
         setGenres(fetchedGenres);
         setCategories(fetchedCategories);
-      } catch (error) {
+      } catch {
         toast.error("Failed to fetch genres or categories.");
       }
     };
@@ -46,7 +46,7 @@ const CreateAudioBookPage: React.FC = () => {
     fetchData();
   }, [token]);
 
-  const handleSelectCategory = (category: any) => {
+  const handleSelectCategory = (category: {id:string, category_name: string}) => {
     if (!category.id || selectedCategories.find((c) => c.id === category.id)) {
       toast.error("Category already selected or invalid selection.");
       return;
@@ -54,7 +54,7 @@ const CreateAudioBookPage: React.FC = () => {
     setSelectedCategories([...selectedCategories, category]);
   };
 
-  const handleSelectGenre = (genre: any) => {
+  const handleSelectGenre = (genre: {id:string, genre_name: string}) => {
     if (!genre.id || selectedGenres.find((g) => g.id === genre.id)) {
       toast.error("Genre already selected or invalid selection.");
       return;
@@ -90,7 +90,7 @@ const CreateAudioBookPage: React.FC = () => {
       setPlan("free");
       setSelectedCategories([]);
       setSelectedGenres([]);
-    } catch (error) {
+    } catch {
       toast.error("Failed to create audiobook. Please try again.");
     }
   };
@@ -179,14 +179,14 @@ const CreateAudioBookPage: React.FC = () => {
             }
           >
             <option value="">Select a genre</option>
-            {genres.map((genre) => (
+            {genres.map((genre: {id:string, genre_name: string}) => (
               <option key={genre.id} value={JSON.stringify(genre)}>
                 {genre.genre_name}
               </option>
             ))}
           </select>
           <div>
-            {selectedGenres.map((genre) => (
+            {selectedGenres.map((genre: {id:string, genre_name: string}) => (
               <span style={{ margin: "2 auto" }} key={genre.id}>
                 {genre.genre_name}
               </span>

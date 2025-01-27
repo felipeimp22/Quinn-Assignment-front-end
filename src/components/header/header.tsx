@@ -6,13 +6,17 @@ import {
   ActionButtons,
   SlidingMenu,
 } from "./styles";
+import { useRouter } from "next/router";
 
 const Header: React.FC = () => {
   const { isAuthenticated, logout } = useAuth();
   const [isMenuOpen, setMenuOpen] = useState(false);
-
+  const router = useRouter();
   const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
+  const handleChangePage = (path:string) =>{
+    router.push(path)
+  }
   return (
     <HeaderContainer>
       <HamburgerButton onClick={toggleMenu} aria-label="Menu">
@@ -24,8 +28,8 @@ const Header: React.FC = () => {
       <ActionButtons>
         {!isAuthenticated ? (
           <>
-            <a href="/login">Login</a>
-            <a href="/register" className="register">
+            <a onClick={()=>handleChangePage("/login")}>Login</a>
+            <a onClick={()=>handleChangePage("/register")} className="register">
               Register
             </a>
           </>
@@ -42,31 +46,31 @@ const Header: React.FC = () => {
           {!isAuthenticated ? (
             <>
               <li>
-                <a href="/">Landing</a>
+                <a onClick={()=>handleChangePage("/")}>Landing</a>
               </li>
               <li>
-                <a href="/login">Login</a>
+                <a onClick={()=>handleChangePage("/login")}>Login</a>
               </li>
               <li>
-                <a href="/register">Register</a>
+                <a onClick={()=>handleChangePage("/register")}>Register</a>
               </li>
               <li>
-                <a href="/discoverTheNew">Discover the New</a>
+                <a onClick={()=>handleChangePage("/discoverTheNew")} >Discover the New</a>
               </li>
             </>
           ) : (
             <>
               <li>
-                <a href="/">Landing</a>
+                <a onClick={()=>handleChangePage("/")}>Landing</a>
               </li>
               <li>
-                <a href="/discoverTheNew">Discover the New</a>
+                <a onClick={()=>handleChangePage("/discoverTheNew")}>Discover the New</a>
               </li>
               <li>
-                <a href="/categoryAndGenre">Create genres and categories</a>
+                <a onClick={()=>handleChangePage("/categoryAndGenre")}>Create genres and categories</a>
               </li>
               <li>
-                <a href="/createAudioBook">Create Audio Book</a>
+                <a onClick={()=>handleChangePage("/createAudioBook")}>Create Audio Book</a>
               </li>
             </>
           )}

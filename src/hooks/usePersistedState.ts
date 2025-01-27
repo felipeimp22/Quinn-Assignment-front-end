@@ -2,7 +2,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 
 interface PropsPersistence {
     key: string;
-    initialState: any;
+    initialState: unknown;
 }
 
 type Response<T> = [T, Dispatch<SetStateAction<T>>];

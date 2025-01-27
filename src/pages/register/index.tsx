@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import { registerUser } from "@/services/registerUser";
 import { toast } from "react-toastify";
-import { FormGroup, Input, Label, PageContainer, RegisterForm, SubmitButton, Title } from "@/components/forms/forms";
+import {
+  FormGroup,
+  Input,
+  Label,
+  PageContainer,
+  RegisterForm,
+  SubmitButton,
+  Title,
+} from "@/components/forms/forms";
+import { useRouter } from "next/router";
+
 const RegisterPage = () => {
+  const router = useRouter();
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,21 +25,22 @@ const RegisterPage = () => {
     try {
       await registerUser(username, email, password, plan);
       toast.success("Registration successful! You can now log in", {
-                position: "top-center",
-                autoClose: 3000, 
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-              });
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      router.push("/login");
     } catch (error) {
       console.error("Registration failed:", error);
 
       toast.error("Registration failed!", {
         position: "top-center",
-        autoClose: 3000, 
+        autoClose: 3000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,

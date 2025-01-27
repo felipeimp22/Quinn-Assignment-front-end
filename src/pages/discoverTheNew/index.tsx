@@ -17,15 +17,15 @@ import { ListWrapper } from "./styles";
 
 const FilterAudioBooksPage: React.FC = () => {
   const [title, setTitle] = useState("");
-  const [categories, setCategories] = useState<any[]>([]);
-  const [genres, setGenres] = useState<any[]>([]);
-  const [selectedCategories, setSelectedCategories] = useState<any[]>([]);
-  const [selectedGenres, setSelectedGenres] = useState<any[]>([]);
-  const [audioBookFiltered, setAudioBookFiltered] = useState<any[]>([]);
+  const [categories, setCategories] = useState<{id:string, category_name:string}[]>([]);
+  const [genres, setGenres] = useState<{id:string, genre_name:string}[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<{id:string, category_name:string}[]>([]);
+  const [selectedGenres, setSelectedGenres] = useState<{id:string, genre_name:string}[]>([]);
+  const [audioBookFiltered, setAudioBookFiltered] = useState<never[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
-    const router = useRouter();
+  const router = useRouter();
 
   const token = localStorage.getItem("token");
 
@@ -41,7 +41,7 @@ const FilterAudioBooksPage: React.FC = () => {
         const fetchedCategories = await getCategories(token);
         setGenres(fetchedGenres);
         setCategories(fetchedCategories);
-      } catch (error) {
+      } catch {
         toast.error("Failed to fetch genres or categories.");
       }
     };
@@ -49,7 +49,7 @@ const FilterAudioBooksPage: React.FC = () => {
     fetchData();
   }, [token]);
 
-  const handleSelectCategory = (category: any) => {
+  const handleSelectCategory = (category: {id:string, category_name:string}) => {
     if (selectedCategories.find((c) => c.id === category.id)) {
       toast.error("Category already selected.");
       return;
@@ -57,7 +57,7 @@ const FilterAudioBooksPage: React.FC = () => {
     setSelectedCategories([...selectedCategories, category]);
   };
 
-  const handleSelectGenre = (genre: any) => {
+  const handleSelectGenre = (genre:{id:string, genre_name:string}) => {
     if (selectedGenres.find((g) => g.id === genre.id)) {
       toast.error("Genre already selected.");
       return;
@@ -77,10 +77,10 @@ const FilterAudioBooksPage: React.FC = () => {
         page,
         10
       );
-      setAudioBookFiltered((prev) => [...prev, ...response.data]);
+      setAudioBookFiltered((prev) => [...prev, ...response.data] as never[]);
       setPage((prev) => prev + 1);
       setHasMore(response.page < response.totalPages);
-    } catch (error) {
+    } catch {
       toast.error("Failed to load more audiobooks.");
     } finally {
       setLoading(false);
@@ -111,7 +111,7 @@ const FilterAudioBooksPage: React.FC = () => {
       );
       setAudioBookFiltered(response.data);
       setHasMore(response.page < response.totalPages);
-    } catch (error) {
+    } catch {
       toast.error("Failed to filter audiobooks.");
     }
   };

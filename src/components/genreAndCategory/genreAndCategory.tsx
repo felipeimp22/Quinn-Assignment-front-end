@@ -25,7 +25,7 @@ const CreateCategoryGenre: React.FC = () => {
         toast.success("Genre created successfully!");
       }
       setInputValue(""); 
-    } catch (error) {
+    } catch {
       toast.error("Failed to create. Please try again.");
     }
   };

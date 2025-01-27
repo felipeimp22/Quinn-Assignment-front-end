@@ -9,10 +9,16 @@ import {
   PageContainer,
 } from "./styles";
 
+interface commentsInterface{
+    id:string
+    username:string
+    comment:string
+    created_at:string
+}
 const Comments = () => {
   const router = useRouter();
   const { audio_book_id } = router.query;
-  const [comments, setComments] = useState<any[]>([]);
+  const [comments, setComments] = useState<commentsInterface[]>([]);
   const [newComment, setNewComment] = useState<string>("");
   const token = localStorage.getItem("token");
 
@@ -20,7 +26,7 @@ const Comments = () => {
     if (audio_book_id) {
       fetchComments(audio_book_id as string)
         .then((data) => setComments(data.data))
-        .catch((error) => toast.error("Failed to load comments"));
+        .catch(() => toast.error("Failed to load comments"));
     }
   }, [audio_book_id]);
 
@@ -37,7 +43,7 @@ const Comments = () => {
         setComments(data.data)
       );
       toast.success("Comment added successfully!");
-    } catch (error) {
+    } catch {
       toast.error("Failed to add comment.");
     }
   };

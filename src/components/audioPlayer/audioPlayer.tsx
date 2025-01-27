@@ -11,9 +11,9 @@ import {
 
 const AudioPlayer = () => {
   const router = useRouter();
-  const { id, audioBookId, path } = router.query; // Get data passed via query params
+  const { audioBookId, path } = router.query; 
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
-  const [progress, setProgress] = useState<number>(0); // Track progress (0 to 100)
+  const [progress, setProgress] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const token = localStorage.getItem("token");
   const audioRef = useRef<HTMLAudioElement | null>(null);
